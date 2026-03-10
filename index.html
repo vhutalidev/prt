@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vhutali Africa Gavhi | Software Engineer & Cyber Security Specialist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0f172a',
+                        secondary: '#1e293b',
+                        accent: '#06b6d4',
+                        'accent-purple': '#8b5cf6',
+                        'neon-green': '#10b981',
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+        
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .grid-pattern {
+            background-image: radial-gradient(rgba(6, 182, 212, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        
+        .skill-card {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.2);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: linear-gradient(90deg, #06b6d4, #8b5cf6);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .project-card:hover {
+            transform: scale(1.02);
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .timeline-line {
+            background: linear-gradient(to bottom, #06b6d4, #8b5cf6);
+        }
+        
+        .security-grid {
+            background-image: 
+                linear-gradient(rgba(6, 182, 212, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        .glitch-effect:hover {
+            animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+        }
+        
+        @keyframes glitch {
+            0% { transform: translate(0) }
+            20% { transform: translate(-2px, 2px) }
+            40% { transform: translate(-2px, -2px) }
+            60% { transform: translate(2px, 2px) }
+            80% { transform: translate(2px, -2px) }
+            100% { transform: translate(0) }
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #06b6d4, #8b5cf6);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="custom-scrollbar">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-panel border-b border-white/10 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center font-bold text-white text-lg">
+                        VG
+                    </div>
+                    <span class="font-display font-bold text-xl tracking-tight text-white">
+                        Vhutali<span class="text-cyan-400">.dev</span>
+                    </span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">About</a>
+                    <a href="#skills" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Skills</a>
+                    <a href="#education" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Education</a>
+                    <a href="#projects" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Projects</a>
+                    <a href="#security" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Security</a>
+                    <a href="#contact" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">Contact</a>
+                </div>
+
+                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-white/10">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-md">About</a>
+                <a href="#skills" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-md">Skills</a>
+                <a href="#education" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-md">Education</a>
+                <a href="#projects" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-md">Projects</a>
+                <a href="#security" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-md">Security</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-md">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 grid-pattern opacity-30"></div>
+        <div class="absolute top-0 left-0 w-96 h-96 bg-cyan-500/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+        <div class="absolute top-0 right-0 w-96 h-96 bg-purple-500/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-32 left-20 w-96 h-96 bg-emerald-500/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-12">
+            <!-- Profile Image -->
+            <div class="lg:w-1/2 flex justify-center">
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+                    <div class="relative w-80 h-80 rounded-2xl overflow-hidden border-2 border-white/10 transform transition-transform duration-500 hover:scale-105">
+                        <img src="https://i.imgur.com/OCxePr0.jpeg" alt="Vhutali Africa Gavhi" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <p class="text-white font-medium"><i class="fas fa-map-marker-alt mr-2 text-cyan-400"></i>University of Venda</p>
+                        </div>
+                    </div>
+                    <!-- Floating Badges -->
+                    <div class="absolute -top-4 -right-4 bg-slate-800/90 backdrop-blur px-4 py-2 rounded-full border border-cyan-500/30 animate-float">
+                        <span class="text-cyan-400 font-bold text-sm"><i class="fas fa-shield-alt mr-2"></i>Security Focused</span>
+                    </div>
+                    <div class="absolute -bottom-4 -left-4 bg-slate-800/90 backdrop-blur px-4 py-2 rounded-full border border-purple-500/30 animate-float" style="animation-delay: 1s;">
+                        <span class="text-purple-400 font-bold text-sm"><i class="fas fa-code mr-2"></i>Full Stack</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="lg:w-1/2 text-center lg:text-left">
+                <div class="inline-block px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-sm font-medium mb-6">
+                    Available for Opportunities
+                </div>
+                <h1 class="font-display text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+                    Hi, I'm <span class="gradient-text">Vhutali</span><br>
+                    <span class="text-3xl lg:text-5xl text-gray-400 font-light typing-cursor" id="typing-text"></span>
+                </h1>
+                <p class="text-lg text-gray-400 mb-8 max-w-2xl leading-relaxed">
+                    Computer Science & Mathematics student at the University of Venda. Passionate about building secure, scalable software solutions and exploring the frontiers of Cyber Security.
+                </p>
+                
+                <div class="flex flex-wrap gap-4 justify-center lg:justify-start mb-8">
+                    <a href="#projects" class="px-8 py-4 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-full font-semibold text-white hover:shadow-lg hover:shadow-cyan-500/25 transition-all transform hover:-translate-y-1">
+                        View My Work <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#contact" class="px-8 py-4 border border-white/20 rounded-full font-semibold text-white hover:bg-white/5 transition-all">
+                        Get In Touch
+                    </a>
+                </div>
+
+                <div class="flex gap-6 justify-center lg:justify-start text-gray-400">
+                    <a href="https://github.com" target="_blank" class="hover:text-cyan-400 transition-colors text-2xl"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/vhutali-gavhi-africa-93a570266?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" class="hover:text-cyan-400 transition-colors text-2xl"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:23000936@mvula.univen.ac.za" class="hover:text-cyan-400 transition-colors text-2xl"><i class="fas fa-envelope"></i></a>
+                    <a href="https://x.com/gavhi__vhutali?s=21" target="_blank" class="hover:text-cyan-400 transition-colors text-2xl"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-6 reveal-on-scroll">
+                    <h2 class="font-display text-4xl font-bold mb-6">
+                        About <span class="gradient-text">Me</span>
+                    </h2>
+                    <p class="text-gray-400 text-lg leading-relaxed">
+                        I'm a dedicated student at the University of Venda, pursuing a dual focus in Computer Science and Mathematics. My academic journey has equipped me with a unique analytical perspective that bridges theoretical computing with practical software engineering.
+                    </p>
+                    <p class="text-gray-400 text-lg leading-relaxed">
+                        My passion lies in the intersection of software development and cyber security. I believe that understanding the mathematical foundations of computing is crucial for developing secure, efficient systems in our increasingly connected world.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 pt-6">
+                        <div class="glass-panel p-4 rounded-xl border-l-4 border-cyan-500">
+                            <h3 class="text-2xl font-bold text-white mb-1">3+</h3>
+                            <p class="text-gray-400 text-sm">Years Coding</p>
+                        </div>
+                        <div class="glass-panel p-4 rounded-xl border-l-4 border-purple-500">
+                            <h3 class="text-2xl font-bold text-white mb-1">15+</h3>
+                            <p class="text-gray-400 text-sm">Projects Completed</p>
+                        </div>
+                        <div class="glass-panel p-4 rounded-xl border-l-4 border-emerald-500">
+                            <h3 class="text-2xl font-bold text-white mb-1">5+</h3>
+                            <p class="text-gray-400 text-sm">Certifications</p>
+                        </div>
+                        <div class="glass-panel p-4 rounded-xl border-l-4 border-pink-500">
+                            <h3 class="text-2xl font-bold text-white mb-1">100%</h3>
+                            <p class="text-gray-400 text-sm">Commitment</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative reveal-on-scroll">
+                    <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-2xl transform rotate-3 opacity-20"></div>
+                    <div class="glass-panel p-8 rounded-2xl relative space-y-6">
+                        <h3 class="text-xl font-bold text-white mb-4">Quick Facts</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4 p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors cursor-pointer group">
+                                <div class="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-graduation-cap text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-400">Education</p>
+                                    <p class="text-white font-medium">BSc Computer Science & Mathematics</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-4 p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors cursor-pointer group">
+                                <div class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-university text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-400">University</p>
+                                    <p class="text-white font-medium">University of Venda</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-4 p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors cursor-pointer group">
+                                <div class="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-map-marker-alt text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-400">Location</p>
+                                    <p class="text-white font-medium">Limpopo, South Africa</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-4 p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors cursor-pointer group">
+                                <div class="w-12 h-12 rounded-full bg-pink-500/20 flex items-center justify-center text-pink-400 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-bullseye text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-400">Focus Areas</p>
+                                    <p class="text-white font-medium">Software Engineering & Cyber Security</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 relative bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-on-scroll">
+                <h2 class="font-display text-4xl font-bold mb-4">Technical <span class="gradient-text">Skills</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">A comprehensive toolkit spanning web development, programming, and security fundamentals.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- HTML -->
+                <div class="skill-card glass-panel p-6 rounded-2xl border border-white/5 reveal-on-scroll cursor-pointer group" onclick="showSkillDetail('html')">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-xl bg-orange-500/20 flex items-center justify-center text-orange-500 text-2xl">
+                                <i class="fab fa-html5"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white">HTML5</h3>
+                                <p class="text-xs text-gray-400">Markup Language</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right text-gray-600 group-hover:text-cyan-400 transition-colors"></i>
+                    </div>
+                    <div class="w-full bg-slate-700 rounded-full h-2 mb-2">
+                        <div class="bg-gradient-to-r from-orange-500 to-orange-400 h-2 rounded-full" style="width: 95%"></div>
+                    </div>
+                    <p class="text-xs text-gray-500 text-right">95% Proficiency</p>
+                </div>
+
+                <!-- CSS -->
+                <div class="skill-card glass-panel p-6 rounded-2xl border border-white/5 reveal-on-scroll cursor-pointer group" onclick="showSkillDetail('css')">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-500 text-2xl">
+                                <i class="fab fa-css3-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white">CSS3</h3>
+                                <p class="text-xs text-gray-400">Styling</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right text-gray-600 group-hover:text-cyan-400 transition-colors"></i>
+                    </div>
+                    <div class="w-full bg-slate-700 rounded-full h-2 mb-2">
+                        <div class="bg-gradient-to-r from-blue-500 to-blue-400 h-2 rounded-full" style="width: 90%"></div>
+                    </div>
+                    <p class="text-xs text-gray-500 text-right">90% Proficiency</p>
+                </div>
+
+                <!-- Java -->
+                <div class="skill-card glass-panel p-6 rounded-2xl border border-white/5 reveal-on-scroll cursor-pointer group" onclick="showSkillDetail('java')">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-xl bg-red-500/20 flex items-center justify-center text-red-500 text-2xl">
+                                <i class="fab fa-java"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white">Java</h3>
+                                <p class="text-xs text-gray-400">Backend/OOP</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right text-gray-600 group-hover:text-cyan-400 transition-colors"></i>
+                    </div>
+                    <div class="w-full bg-slate-700 rounded-full h-2 mb-2">
+                        <div class="bg-gradient-to-r from-red-500 to-red-400 h-2 rounded-full" style="width: 85%"></div>
+                    </div>
+                    <p class="text-xs text-gray-500 text-right">85% Proficiency</p>
+                </div>
+
+                <!-- Python -->
+                <div class="skill-card glass-panel p-6 rounded-2xl border border-white/5 reveal-on-scroll cursor-pointer group" onclick="showSkillDetail('python')">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-xl bg-yellow-500/20 flex items-center justify-center text-yellow-500 text-2xl">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white">Python</h3>
+                                <p class="text-xs text-gray-400">Scripting/AI</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right text-gray-600 group-hover:text-cyan-400 transition-colors"></i>
+                    </div>
+                    <div class="w-full bg-slate-700 rounded-full h-2 mb-2">
+                        <div class="bg-gradient-to-r from-yellow-500 to-yellow-400 h-2 rounded-full" style="width: 88%"></div>
+                    </div>
+                    <p class="text-xs text-gray-500 text-right">88% Proficiency</p>
+                </div>
+
+                <!-- JavaScript -->
+                <div class="skill-card glass-panel p-6 rounded-2xl border border-white/5 reveal-on-scroll cursor-pointer group" onclick="showSkillDetail('javascript')">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-xl bg-yellow-400/20 flex items-center justify-center text-yellow-400 text-2xl">
+                                <i class="fab fa-js"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white">JavaScript</h3>
+                                <p class="text-xs text-gray-400">Frontend Logic</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right text-gray-600 group-hover:text-cyan-400 transition-colors"></i>
+                    </div>
+                    <div class="w-full bg-slate-700 rounded-full h-2 mb-2">
+                        <div class="bg-gradient-to-r from-yellow-400 to-yellow-300 h-2 rounded-full" style="width: 82%"></div>
+                    </div>
+                    <p class="text-xs text-gray-500 text-right">82% Proficiency</p>
+                </div>
+
+                <!-- Cyber Security -->
+                <div class="skill-card glass-panel p-6 rounded-2xl border border-white/5 reveal-on-scroll cursor-pointer group glitch-effect" onclick="showSkillDetail('security')">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-500 text-2xl">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white">Cyber Security</h3>
+                                <p class="text-xs text-gray-400">Network Security</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right text-gray-600 group-hover:text-cyan-400 transition-colors"></i>
+                    </div>
+                    <div class="w-full bg-slate-700 rounded-full h-2 mb-2">
+                        <div class="bg-gradient-to-r from-emerald-500 to-emerald-400 h-2 rounded-full" style="width: 75%"></div>
+                    </div>
+                    <p class="text-xs text-gray-500 text-right">75% Proficiency</p>
+                </div>
+            </div>
+
+            <!-- Skill Detail Modal (Hidden by default) -->
+            <div id="skill-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+                <div class="glass-panel max-w-2xl w-full rounded-2xl p-8 relative transform transition-all scale-95 opacity-0" id="skill-modal-content">
+                    <button onclick="closeSkillModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                    <div id="skill-modal-body"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Timeline -->
+    <section id="education" class="py-24 relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-on-scroll">
+                <h2 class="font-display text-4xl font-bold mb-4">Education & <span class="gradient-text">Experience</span></h2>
+                <p class="text-gray-400">My academic journey and professional development.</p>
+            </div>
+
+            <div class="relative">
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 timeline-line rounded-full"></div>
+
+                <!-- University -->
+                <div class="relative mb-12 reveal-on-scroll">
+                    <div class="flex items-center justify-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-slate-800 border-4 border-cyan-500 flex items-center justify-center z-10">
+                            <i class="fas fa-university text-cyan-400"></i>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl ml-auto mr-auto md:ml-0 md:mr-[50%] md:pr-12 md:text-right relative group hover:border-cyan-500/50 transition-colors cursor-pointer" onclick="toggleEducationDetail('uni')">
+                        <div class="absolute top-6 right-6 md:left-6 md:right-auto text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <span class="text-cyan-400 text-sm font-semibold">2023 - Present</span>
+                        <h3 class="text-xl font-bold text-white mt-2">BSc Computer Science & Mathematics</h3>
+                        <p class="text-gray-400">University of Venda</p>
+                        <div class="mt-3 flex flex-wrap gap-2 justify-end md:justify-end">
+                            <span class="px-3 py-1 bg-cyan-500/10 text-cyan-400 rounded-full text-xs border border-cyan-500/20">Software Engineering</span>
+                            <span class="px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full text-xs border border-purple-500/20">Cyber Security</span>
+                        </div>
+                        <div id="uni-detail" class="hidden mt-4 pt-4 border-t border-white/10 text-left text-sm text-gray-400">
+                            <p>Currently pursuing a dual major focusing on algorithm design, data structures, network security, and cryptography. Active member of the Computer Science Society.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- High School -->
+                <div class="relative reveal-on-scroll">
+                    <div class="flex items-center justify-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-slate-800 border-4 border-emerald-500 flex items-center justify-center z-10">
+                            <i class="fas fa-school text-emerald-400"></i>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl ml-auto mr-auto md:mr-0 md:ml-[50%] md:pl-12 relative group hover:border-emerald-500/50 transition-colors cursor-pointer" onclick="toggleEducationDetail('school')">
+                        <div class="absolute top-6 left-6 text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <span class="text-emerald-400 text-sm font-semibold">2022</span>
+                        <h3 class="text-xl font-bold text-white mt-2">High School Bachelor</h3>
+                        <p class="text-gray-400">Mathematics & Science Focus</p>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 rounded-full text-xs border border-emerald-500/20">Mathematics</span>
+                            <span class="px-3 py-1 bg-orange-500/10 text-orange-400 rounded-full text-xs border border-orange-500/20">Physical Science</span>
+                        </div>
+                        <div id="school-detail" class="hidden mt-4 pt-4 border-t border-white/10 text-sm text-gray-400">
+                            <p>Graduated with distinctions in Mathematics and Physical Science. Developed early interest in programming through computer studies elective.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 relative bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-on-scroll">
+                <h2 class="font-display text-4xl font-bold mb-4">Featured <span class="gradient-text">Projects</span></h2>
+                <p class="text-gray-400">A selection of my recent work in software development and security research.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card glass-panel rounded-2xl overflow-hidden border border-white/5 group reveal-on-scroll">
+                    <div class="relative h-48 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-purple-500/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-shield-virus text-6xl text-cyan-400/50"></i>
+                        </div>
+                        <div class="project-overlay absolute inset-0 bg-slate-900/90 opacity-0 transition-opacity duration-300 flex items-center justify-center gap-4">
+                            <button class="px-4 py-2 bg-cyan-500 rounded-full text-white text-sm font-medium hover:bg-cyan-600 transition-colors">View Demo</button>
+                            <button class="px-4 py-2 border border-white/20 rounded-full text-white text-sm font-medium hover:bg-white/10 transition-colors">Code</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">SecureAuth System</h3>
+                            <span class="text-xs px-2 py-1 bg-cyan-500/10 text-cyan-400 rounded border border-cyan-500/20">Security</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4">Multi-factor authentication system with biometric integration and encryption protocols.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs text-gray-500"><i class="fab fa-java mr-1"></i>Java</span>
+                            <span class="text-xs text-gray-500"><i class="fas fa-database mr-1"></i>MySQL</span>
+                            <span class="text-xs text-gray-500"><i class="fab fa-html5 mr-1"></i>HTML/CSS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card glass-panel rounded-2xl overflow-hidden border border-white/5 group reveal-on-scroll">
+                    <div class="relative h-48 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-chart-line text-6xl text-purple-400/50"></i>
+                        </div>
+                        <div class="project-overlay absolute inset-0 bg-slate-900/90 opacity-0 transition-opacity duration-300 flex items-center justify-center gap-4">
+                            <button class="px-4 py-2 bg-purple-500 rounded-full text-white text-sm font-medium hover:bg-purple-600 transition-colors">View Demo</button>
+                            <button class="px-4 py-2 border border-white/20 rounded-full text-white text-sm font-medium hover:bg-white/10 transition-colors">Code</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">DataViz Analytics</h3>
+                            <span class="text-xs px-2 py-1 bg-purple-500/10 text-purple-400 rounded border border-purple-500/20">Data</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4">Real-time data visualization dashboard for mathematical modeling and statistical analysis.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs text-gray-500"><i class="fab fa-python mr-1"></i>Python</span>
+                            <span class="text-xs text-gray-500"><i class="fas fa-chart-bar mr-1"></i>Matplotlib</span>
+                            <span class="text-xs text-gray-500"><i class="fab fa-js mr-1"></i>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card glass-panel rounded-2xl overflow-hidden border border-white/5 group reveal-on-scroll">
+                    <div class="relative h-48 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-cyan-500/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-network-wired text-6xl text-emerald-400/50"></i>
+                        </div>
+                        <div class="project-overlay absolute inset-0 bg-slate-900/90 opacity-0 transition-opacity duration-300 flex items-center justify-center gap-4">
+                            <button class="px-4 py-2 bg-emerald-500 rounded-full text-white text-sm font-medium hover:bg-emerald-600 transition-colors">View Demo</button>
+                            <button class="px-4 py-2 border border-white/20 rounded-full text-white text-sm font-medium hover:bg-white/10 transition-colors">Code</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">NetGuard Scanner</h3>
+                            <span class="text-xs px-2 py-1 bg-emerald-500/10 text-emerald-400 rounded border border-emerald-500/20">Tool</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4">Network vulnerability scanner with automated reporting and threat detection algorithms.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs text-gray-500"><i class="fab fa-python mr-1"></i>Python</span>
+                            <span class="text-xs text-gray-500"><i class="fas fa-terminal mr-1"></i>Bash</span>
+                            <span class="text-xs text-gray-500"><i class="fas fa-shield-alt mr-1"></i>Nmap</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card glass-panel rounded-2xl overflow-hidden border border-white/5 group reveal-on-scroll">
+                    <div class="relative h-48 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-red-500/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-mobile-alt text-6xl text-orange-400/50"></i>
+                        </div>
+                        <div class="project-overlay absolute inset-0 bg-slate-900/90 opacity-0 transition-opacity duration-300 flex items-center justify-center gap-4">
+                            <button class="px-4 py-2 bg-orange-500 rounded-full text-white text-sm font-medium hover:bg-orange-600 transition-colors">View Demo</button>
+                            <button class="px-4 py-2 border border-white/20 rounded-full text-white text-sm font-medium hover:bg-white/10 transition-colors">Code</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-white group-hover:text-orange-400 transition-colors">Campus Connect</h3>
+                            <span class="text-xs px-2 py-1 bg-orange-500/10 text-orange-400 rounded border border-orange-500/20">Web App</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4">Student networking platform for University of Venda with real-time messaging and resource sharing.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs text-gray-500"><i class="fab fa-html5 mr-1"></i>HTML/CSS</span>
+                            <span class="text-xs text-gray-500"><i class="fab fa-js mr-1"></i>JavaScript</span>
+                            <span class="text-xs text-gray-500"><i class="fas fa-fire mr-1"></i>Firebase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card glass-panel rounded-2xl overflow-hidden border border-white/5 group reveal-on-scroll">
+                    <div class="relative h-48 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-pink-500/20 to-rose-500/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-robot text-6xl text-pink-400/50"></i>
+                        </div>
+                        <div class="project-overlay absolute inset-0 bg-slate-900/90 opacity-0 transition-opacity duration-300 flex items-center justify-center gap-4">
+                            <button class="px-4 py-2 bg-pink-500 rounded-full text-white text-sm font-medium hover:bg-pink-600 transition-colors">View Demo</button>
+                            <button class="px-4 py-2 border border-white/20 rounded-full text-white text-sm font-medium hover:bg-white/10 transition-colors">Code</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-white group-hover:text-pink-400 transition-colors">AlgoTrader Bot</h3>
+                            <span class="text-xs px-2 py-1 bg-pink-500/10 text-pink-400 rounded border border-pink-500/20">Automation</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4">Algorithmic trading bot using mathematical models and machine learning predictions.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs text-gray-500"><i class="fab fa-python mr-1"></i>Python</span>
+                            <span class="text-xs text-gray-500"><i class="fas fa-brain mr-1"></i>TensorFlow</span>
+                            <span class="text-xs text-gray-500"><i class="fas fa-calculator mr-1"></i>Pandas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card glass-panel rounded-2xl overflow-hidden border border-white/5 group reveal-on-scroll">
+                    <div class="relative h-48 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-indigo-500/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-lock text-6xl text-blue-400/50"></i>
+                        </div>
+                        <div class="project-overlay absolute inset-0 bg-slate-900/90 opacity-0 transition-opacity duration-300 flex items-center justify-center gap-4">
+                            <button class="px-4 py-2 bg-blue-500 rounded-full text-white text-sm font-medium hover:bg-blue-600 transition-colors">View Demo</button>
+                            <button class="px-4 py-2 border border-white/20 rounded-full text-white text-sm font-medium hover:bg-white/10 transition-colors">Code</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">CryptoVault</h3>
+                            <span class="text-xs px-2 py-1 bg-blue-500/10 text-blue-400 rounded border border-blue-500/20">Blockchain</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4">Decentralized secure storage solution using blockchain technology and smart contracts.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs text-gray-500"><i class="fab fa-js mr-1"></i>Solidity</span>
+                            <span class="text-xs text-gray-500"><i class="fab fa-ethereum mr-1"></i>Web3.js</span>
+                            <span class="text-xs text-gray-500"><i class="fab fa-react mr-1"></i>React</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <button class="px-8 py-3 border border-white/20 rounded-full text-white hover:bg-white/5 transition-all inline-flex items-center gap-2 group">
+                    View All Projects <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cyber Security Focus Section -->
+    <section id="security" class="py-24 relative security-grid">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal-on-scroll">
+                    <div class="inline-block px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-sm font-medium mb-6">
+                        <i class="fas fa-shield-alt mr-2"></i>Specialization
+                    </div>
+                    <h2 class="font-display text-4xl font-bold mb-6">
+                        Cyber Security <span class="gradient-text">Expertise</span>
+                    </h2>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                        With a strong foundation in both theoretical mathematics and practical computing, I approach cyber security with a unique analytical perspective. My focus areas include network security, cryptography, and ethical hacking.
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors cursor-pointer group" onclick="toggleSecurityDetail('network')">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400 flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-white font-semibold mb-1">Network Security</h4>
+                                <p class="text-sm text-gray-400">Firewalls, intrusion detection systems, and secure network architecture</p>
+                                <div id="network-detail" class="hidden mt-3 text-xs text-gray-500 border-l-2 border-emerald-500 pl-3">
+                                    Proficient in configuring enterprise-grade firewalls, implementing VPN solutions, and conducting penetration testing on network infrastructures.
+                                </div>
+                            </div>
+                            <i class="fas fa-chevron-down text-gray-600 group-hover:text-emerald-400 transition-colors"></i>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors cursor-pointer group" onclick="toggleSecurityDetail('crypto')">
+                            <div class="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center text-cyan-400 flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-key"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-white font-semibold mb-1">Cryptography</h4>
+                                <p class="text-sm text-gray-400">Encryption algorithms, PKI, and secure communications</p>
+                                <div id="crypto-detail" class="hidden mt-3 text-xs text-gray-500 border-l-2 border-cyan-500 pl-3">
+                                    Deep understanding of symmetric/asymmetric encryption, hashing algorithms, and blockchain cryptography. Mathematical background aids in cryptographic analysis.
+                                </div>
+                            </div>
+                            <i class="fas fa-chevron-down text-gray-600 group-hover:text-cyan-400 transition-colors"></i>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors cursor-pointer group" onclick="toggleSecurityDetail('ethical')">
+                            <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-400 flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-user-secret"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-white font-semibold mb-1">Ethical Hacking</h4>
+                                <p class="text-sm text-gray-400">Penetration testing, vulnerability assessment, and security auditing</p>
+                                <div id="ethical-detail" class="hidden mt-3 text-xs text-gray-500 border-l-2 border-purple-500 pl-3">
+                                    Certified in ethical hacking methodologies. Experience with Kali Linux, Metasploit, and custom exploit development for security research.
+                                </div>
+                            </div>
+                            <i class="fas fa-chevron-down text-gray-600 group-hover:text-purple-400 transition-colors"></i>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors cursor-pointer group" onclick="toggleSecurityDetail('appsec')">
+                            <div class="w-10 h-10 rounded-lg bg-pink-500/20 flex items-center justify-center text-pink-400 flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-white font-semibold mb-1">Application Security</h4>
+                                <p class="text-sm text-gray-400">Secure coding practices, OWASP top 10, and code review</p>
+                                <div id="appsec-detail" class="hidden mt-3 text-xs text-gray-500 border-l-2 border-pink-500 pl-3">
+                                    Expertise in identifying and mitigating common vulnerabilities (SQL injection, XSS, CSRF). Implementing secure SDLC practices in software projects.
+                                </div>
+                            </div>
+                            <i class="fas fa-chevron-down text-gray-600 group-hover:text-pink-400 transition-colors"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative reveal-on-scroll">
+                    <div class="absolute inset-0 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-2xl transform rotate-3 opacity-20 blur-xl"></div>
+                    <div class="glass-panel p-8 rounded-2xl relative">
+                        <h3 class="text-xl font-bold text-white mb-6">Security Tools & Technologies</h3>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="p-4 rounded-xl bg-white/5 text-center hover:bg-white/10 transition-colors cursor-pointer group">
+                                <i class="fab fa-linux text-3xl text-yellow-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                                <p class="text-sm text-gray-300">Kali Linux</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-white/5 text-center hover:bg-white/10 transition-colors cursor-pointer group">
+                                <i class="fas fa-bug text-3xl text-red-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                                <p class="text-sm text-gray-300">Metasploit</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-white/5 text-center hover:bg-white/10 transition-colors cursor-pointer group">
+                                <i class="fas fa-network-wired text-3xl text-blue-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                                <p class="text-sm text-gray-300">Wireshark</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-white/5 text-center hover:bg-white/10 transition-colors cursor-pointer group">
+                                <i class="fas fa-shield-virus text-3xl text-emerald-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                                <p class="text-sm text-gray-300">Nmap</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-white/5 text-center hover:bg-white/10 transition-colors cursor-pointer group">
+                                <i class="fas fa-lock text-3xl text-purple-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                                <p class="text-sm text-gray-300">OpenSSL</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-white/5 text-center hover:bg-white/10 transition-colors cursor-pointer group">
+                                <i class="fas fa-terminal text-3xl text-gray-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                                <p class="text-sm text-gray-300">Burp Suite</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
+                            <div class="flex items-center gap-3 mb-2">
+                                <i class="fas fa-check-circle text-emerald-400"></i>
+                                <span class="text-white font-semibold">Security First Approach</span>
+                            </div>
+                            <p class="text-sm text-gray-400">Every line of code I write considers security implications from the ground up.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-on-scroll">
+                <h2 class="font-display text-4xl font-bold mb-4">Get In <span class="gradient-text">Touch</span></h2>
+                <p class="text-gray-400">Let's collaborate on your next project or discuss security solutions.</p>
+            </div>
+
+            <div class="glass-panel p-8 md:p-12 rounded-2xl reveal-on-scroll">
+                <form class="space-y-6" onsubmit="handleSubmit(event)">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-gray-300">Name</label>
+                            <input type="text" required class="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 transition-all" placeholder="John Doe">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-gray-300">Email</label>
+                            <input type="email" required class="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 transition-all" placeholder="john@example.com">
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium text-gray-300">Subject</label>
+                        <select class="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-white/10 text-white focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 transition-all">
+                            <option>Project Collaboration</option>
+                            <option>Security Consultation</option>
+                            <option>Job Opportunity</option>
+                            <option>General Inquiry</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium text-gray-300">Message</label>
+                        <textarea rows="5" required class="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 transition-all resize-none" placeholder="Tell me about your project..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-xl font-semibold text-white hover:shadow-lg hover:shadow-cyan-500/25 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 group">
+                        Send Message <i class="fas fa-paper-plane group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </form>
+
+                <div class="mt-12 pt-8 border-t border-white/10 grid md:grid-cols-3 gap-6 text-center">
+                    <a href="mailto:23000936@mvula.univen.ac.za" class="group">
+                        <div class="w-12 h-12 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400 mx-auto mb-3 group-hover:bg-cyan-500/20 transition-colors">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </div>
+                        <p class="text-sm text-gray-400">Email</p>
+                        <p class="text-white font-medium text-sm break-all">23000936@mvula.univen.ac.za</p>
+                    </a>
+                    
+                    <a href="#" class="group">
+                        <div class="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center text-purple-400 mx-auto mb-3 group-hover:bg-purple-500/20 transition-colors">
+                            <i class="fas fa-phone text-xl"></i>
+                        </div>
+                        <p class="text-sm text-gray-400">Phone</p>
+                        <p class="text-white font-medium">+27660350661</p>
+                    </a>
+                    
+                    <a href="#" class="group">
+                        <div class="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 mx-auto mb-3 group-hover:bg-emerald-500/20 transition-colors">
+                            <i class="fas fa-map-marker-alt text-xl"></i>
+                        </div>
+                        <p class="text-sm text-gray-400">Location</p>
+                        <p class="text-white font-medium">Thohoyandou, Limpopo</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/10 bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center font-bold text-white">
+                        VG
+                    </div>
+                    <span class="font-display font-bold text-xl text-white">
+                        Vhutali<span class="text-cyan-400">.dev</span>
+                    </span>
+                </div>
+                
+                <div class="flex gap-6 text-gray-400">
+                    <a href="https://github.com" target="_blank" class="hover:text-cyan-400 transition-colors text-xl"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/vhutali-gavhi-africa-93a570266?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" class="hover:text-cyan-400 transition-colors text-xl"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://x.com/gavhi__vhutali?s=21" target="_blank" class="hover:text-cyan-400 transition-colors text-xl"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/gavhi.vhutali?igsh=MWZ1Zzc3MmtrbnBkOA%3D%3D&utm_source=qr" target="_blank" class="hover:text-cyan-400 transition-colors text-xl"><i class="fab fa-instagram"></i></a>
+                </div>
+
+                <p class="text-gray-500 text-sm">
+                    © 2024 Vhutali Africa Gavhi. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Typing Effect
+        const texts = ["Software Engineer", "Cyber Security Specialist", "Mathematics Student", "Problem Solver"];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingElement = document.getElementById('typing-text');
+
+        function type() {
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                typingElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentText.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        // Start typing effect
+        type();
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Skill Detail Modal
+        const skillDetails = {
+            html: {
+                title: 'HTML5 Mastery',
+                icon: 'fab fa-html5',
+                color: 'text-orange-500',
+                content: 'Expert in semantic HTML5 markup, accessibility standards (ARIA), SEO optimization, and modern web standards. Experienced with complex form structures, multimedia integration, and canvas manipulation.'
+            },
+            css: {
+                title: 'CSS3 & Styling',
+                icon: 'fab fa-css3-alt',
+                color: 'text-blue-500',
+                content: 'Proficient in Flexbox, Grid, animations, transitions, and responsive design. Experienced with Tailwind CSS, SASS/SCSS, and CSS architecture methodologies like BEM.'
+            },
+            java: {
+                title: 'Java Development',
+                icon: 'fab fa-java',
+                color: 'text-red-500',
+                content: 'Strong foundation in Object-Oriented Programming, data structures, and algorithms. Experience with Spring Boot, JavaFX for GUI development, and JDBC for database connectivity.'
+            },
+            python: {
+                title: 'Python Programming',
+                icon: 'fab fa-python',
+                color: 'text-yellow-500',
+                content: 'Versatile Python developer with experience in automation, data analysis (Pandas, NumPy), web scraping, and security scripting. Familiar with Django and Flask frameworks.'
+            },
+            javascript: {
+                title: 'JavaScript & Beyond',
+                icon: 'fab fa-js',
+                color: 'text-yellow-400',
+                content: 'Modern ES6+ JavaScript, asynchronous programming, DOM manipulation, and API integration. Learning React.js and Node.js for full-stack development.'
+            },
+            security: {
+                title: 'Cyber Security',
+                icon: 'fas fa-shield-alt',
+                color: 'text-emerald-500',
+                content: 'Network security, penetration testing, vulnerability assessment, and secure coding practices. Knowledge of cryptography, firewalls, and security frameworks.'
+            }
+        };
+
+        function showSkillDetail(skill) {
+            const modal = document.getElementById('skill-modal');
+            const content = document.getElementById('skill-modal-content');
+            const body = document.getElementById('skill-modal-body');
+            const details = skillDetails[skill];
+
+            body.innerHTML = `
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-16 h-16 rounded-2xl bg-slate-800 flex items-center justify-center ${details.color} text-3xl">
+                        <i class="${details.icon}"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white">${details.title}</h3>
+                </div>
+                <p class="text-gray-300 leading-relaxed mb-6">${details.content}</p>
+                <div class="flex gap-3">
+                    <button class="px-6 py-2 bg-cyan-500 rounded-lg text-white hover:bg-cyan-600 transition-colors">View Projects</button>
+                    <button class="px-6 py-2 border border-white/20 rounded-lg text-white hover:bg-white/5 transition-colors">Certifications</button>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => {
+                content.classList.remove('scale-95', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeSkillModal() {
+            const modal = document.getElementById('skill-modal');
+            const content = document.getElementById('skill-modal-content');
+            
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300);
+        }
+
+        // Close modal on outside click
+        document.getElementById('skill-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeSkillModal();
+        });
+
+        // Education Detail Toggle
+        function toggleEducationDetail(id) {
+            const detail = document.getElementById(id + '-detail');
+            detail.classList.toggle('hidden');
+        }
+
+        // Security Detail Toggle
+        function toggleSecurityDetail(id) {
+            const detail = document.getElementById(id + '-detail');
+            const icon = event.currentTarget.querySelector('.fa-chevron-down');
+            
+            detail.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
+        // Form Submission
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalContent = btn.innerHTML;
+            
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+                btn.classList.remove('from-cyan-500', 'to-purple-600');
+                btn.classList.add('from-emerald-500', 'to-emerald-600');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalContent;
+                    btn.classList.remove('from-emerald-500', 'to-emerald-600');
+                    btn.classList.add('from-cyan-500', 'to-purple-600');
+                    btn.disabled = false;
+                    e.target.reset();
+                }, 3000);
+            }, 2000);
+        }
+
+        // Scroll Reveal Animation
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.utils.toArray('.reveal-on-scroll').forEach(element => {
+            gsap.fromTo(element, 
+                {
+                    opacity: 0,
+                    y: 50
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 85%',
+                        toggleActions: 'play none none reverse'
+                    }
+                }
+            );
+        });
+
